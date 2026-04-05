@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daphne Tan for Tag</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@300;400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --black: #050505;
+  --white: #eeebe3;
+  --yellow: #FFE227;
+  --border: #1e1e1e;
+  --muted: #4a4a4a;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1rem 2.5rem;
+  border-bottom: 0.5px solid var(--border);
+  position: sticky; top: 0; background: var(--black); z-index: 50;
+}
+.mono { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.12em; text-transform: uppercase; }
+.nav-logo { font-family: 'Syne', sans-serif; font-size: 13px; font-weight: 800; color: var(--white); letter-spacing: 0.04em; }
+
+.hero {
+  padding: 4.5rem 2.5rem 5rem;
+  border-bottom: 0.5px solid var(--border);
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: end;
+}
+@media(max-width:700px){ .hero { grid-template-columns: 1fr; gap: 2.5rem; } }
+.hero-kicker { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 1.75rem; }
+.hero-h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(56px, 9vw, 112px);
+  font-weight: 800; line-height: 0.9; letter-spacing: -0.025em;
+}
+.hero-h1 .ghost { color: var(--border); }
+.hero-right { padding-bottom: 0.5rem; }
+.hero-body { font-size: 16px; line-height: 1.8; color: #6a6a6a; margin-bottom: 2rem; }
+.hero-body strong { color: var(--white); font-weight: 400; }
+.hero-quote {
+  border-left: 2px solid var(--yellow);
+  padding-left: 1.25rem; font-size: 14px; color: #555; line-height: 1.7; font-style: italic;
+}
+
+.word-strip {
+  border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+  overflow: hidden; white-space: nowrap; padding: 0.85rem 0; background: var(--black);
+}
+.word-strip-inner { display: inline-flex; gap: 0; animation: ticker 22s linear infinite; }
+.word-strip-inner span {
+  font-family: 'Syne', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); padding: 0 2.5rem;
+}
+.word-strip-inner span.hi { color: var(--yellow); }
+@keyframes ticker { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+.catch { background: var(--yellow); padding: 3.5rem 2.5rem; }
+.catch-kicker { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #777; margin-bottom: 1.25rem; }
+.catch-h2 {
+  font-family: 'Syne', sans-serif; font-size: clamp(21px, 3vw, 31px); font-weight: 700;
+  color: #080808; line-height: 1.25; max-width: 700px; margin-bottom: 1.25rem;
+}
+.catch-p { font-size: 14px; color: #555; max-width: 620px; line-height: 1.8; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); border-bottom: 0.5px solid var(--border); }
+@media(max-width:640px){ .stats { grid-template-columns: 1fr 1fr; } }
+.stat { padding: 1.75rem 2rem; border-right: 0.5px solid var(--border); }
+.stat:last-child { border-right: none; }
+.stat-n { font-family: 'Syne', sans-serif; font-size: 38px; font-weight: 800; line-height: 1; margin-bottom: 6px; color: var(--white); }
+.stat-n em { color: var(--yellow); font-style: normal; }
+.stat-d { font-size: 12px; color: var(--muted); line-height: 1.5; }
+
+.slr { padding: 0.9rem 2.5rem; border-bottom: 0.5px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+
+.ai-section { padding: 2.5rem; border-bottom: 0.5px solid var(--border); }
+.ai-intro { font-size: 15px; color: #666; max-width: 600px; line-height: 1.8; margin-bottom: 2rem; }
+.ai-intro strong { color: var(--white); font-weight: 400; }
+
+.proj-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border-top: 0.5px solid var(--border); border-left: 0.5px solid var(--border);
+}
+@media(max-width:700px){ .proj-grid { grid-template-columns: 1fr 1fr; } }
+.proj {
+  padding: 1.5rem;
+  border-right: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border);
+  transition: background 0.18s;
+}
+.proj:hover { background: #0e0e0e; }
+.proj-type { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.7rem; }
+.proj-name { font-family: 'Syne', sans-serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 0.55rem; line-height: 1.25; }
+.proj-body { font-size: 12px; color: #4e4e4e; line-height: 1.65; }
+.proj-result { margin-top: 0.8rem; font-family: 'DM Mono', monospace; font-size: 10px; color: var(--yellow); letter-spacing: 0.04em; }
+
+.visual-sep { width: 100%; display: block; border-top: 0.5px solid var(--border); border-bottom: 0.5px solid var(--border); overflow: hidden; }
+
+.argument { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 0.5px solid var(--border); }
+@media(max-width:640px){ .argument { grid-template-columns: 1fr; } }
+.arg-cell { padding: 2.5rem; border-right: 0.5px solid var(--border); }
+.arg-cell:last-child { border-right: none; }
+.arg-label { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--muted); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+.arg-h3 { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 0.85rem; line-height: 1.25; }
+.arg-p { font-size: 14px; color: #5a5a5a; line-height: 1.8; }
+.arg-p strong { color: var(--white); font-weight: 400; }
+
+.traits { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1.25rem; }
+.trait {
+  font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.08em;
+  text-transform: uppercase; border: 0.5px solid var(--border); color: var(--muted); padding: 6px 14px;
+}
+
+.apac { border-bottom: 0.5px solid var(--border); display: grid; grid-template-columns: 1.2fr 1fr; }
+@media(max-width:640px){ .apac { grid-template-columns: 1fr; } }
+.apac-text { padding: 2.5rem; border-right: 0.5px solid var(--border); }
+.apac-h3 { font-family: 'Syne', sans-serif; font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 0.85rem; line-height: 1.3; }
+.apac-p { font-size: 14px; color: #5a5a5a; line-height: 1.8; }
+.apac-p strong { color: var(--white); font-weight: 400; }
+.apac-cities { padding: 2.5rem; display: flex; flex-direction: column; justify-content: center; gap: 0; }
+.city {
+  font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  border-bottom: 0.5px solid var(--border); padding: 0.9rem 0;
+  cursor: pointer; color: var(--muted); background: transparent;
+  display: flex; justify-content: space-between; align-items: center;
+  transition: color 0.15s; text-align: left; width: 100%; border-left: none; border-right: none; border-top: none;
+}
+.city:first-child { border-top: 0.5px solid var(--border); }
+.city .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); transition: background 0.15s; flex-shrink: 0; }
+.city.on { color: var(--white); }
+.city.on .dot { background: var(--yellow); }
+.city:hover { color: var(--white); }
+
+.cta {
+  padding: 4rem 2.5rem; display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 2rem; border-bottom: 0.5px solid var(--border);
+  position: relative; overflow: hidden;
+}
+.cta-bg {
+  position: absolute; right: -40px; top: -60px;
+  font-family: 'Syne', sans-serif; font-size: 200px; font-weight: 800;
+  color: var(--border); line-height: 1; pointer-events: none; user-select: none; opacity: 0.5;
+}
+.cta-line { font-family: 'Syne', sans-serif; font-size: clamp(18px, 2.5vw, 26px); font-weight: 700; color: var(--white); max-width: 500px; line-height: 1.3; position: relative; }
+.cta-line em { color: var(--yellow); font-style: normal; }
+.btn {
+  background: var(--yellow); color: var(--black); border: none;
+  font-family: 'Syne', sans-serif; font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase; padding: 14px 32px; cursor: pointer;
+  text-decoration: none; display: inline-block; flex-shrink: 0; position: relative; transition: opacity 0.15s;
+}
+.btn:hover { opacity: 0.88; }
+
+.foot { padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+.foot a { color: var(--muted); font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.07em; text-decoration: none; }
+.foot a:hover { color: var(--white); }
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+.hero-h1 { animation: fadeUp 0.7s ease both; }
+.hero-right { animation: fadeUp 0.7s 0.12s ease both; }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="mono">Daphne Tan</span>
+  <span class="nav-logo">DT&thinsp;&rarr;&thinsp;TAG</span>
+  <span class="mono">April 2026</span>
+</nav>
+
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-kicker">Program Manager, Marketing Innovation</p>
+    <h1 class="hero-h1">Daphne<br><span class="ghost">Tan.</span></h1>
+  </div>
+  <div class="hero-right">
+    <p class="hero-body">
+      Hi Olivier. I'm curious, slightly impatient with vague strategy, and happiest when ambition actually lands. At Samsung I've been doing exactly that for three years. <strong>In live campaigns, with real budgets, real deadlines and a full agency stack.</strong>
+    </p>
+    <blockquote class="hero-quote">
+      "I find the coordination puzzle genuinely interesting. And I find AI even more interesting when it stops being a pilot and becomes the workflow."
+    </blockquote>
+  </div>
+</section>
+
+<div class="word-strip" aria-hidden="true">
+  <div class="word-strip-inner">
+    <span>Content production</span><span class="hi">at scale</span>
+    <span>AI in live workflows</span><span class="hi">not pilots</span>
+    <span>Creative meets production</span><span class="hi">actually connected</span>
+    <span>Samsung x Cheil</span><span class="hi">same ecosystem</span>
+    <span>Make it land</span><span class="hi">measure what happens</span>
+    <span>Content production</span><span class="hi">at scale</span>
+    <span>AI in live workflows</span><span class="hi">not pilots</span>
+    <span>Creative meets production</span><span class="hi">actually connected</span>
+    <span>Samsung x Cheil</span><span class="hi">same ecosystem</span>
+    <span>Make it land</span><span class="hi">measure what happens</span>
+  </div>
+</div>
+
+<section class="catch">
+  <p class="catch-kicker">Why I'm reaching out directly</p>
+  <h2 class="catch-h2">You spent 9 years turning Cheil into a full-service marketing hub. I've been briefing that same team weekly from the Samsung side for 3 years.</h2>
+  <p class="catch-p">Different seats, same ecosystem. You know exactly what breaks when creative, media and production aren't talking. So do I. Fixing that was my job every week.</p>
+</section>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-n">€<em>15</em>M<em>+</em></div>
+    <div class="stat-d">Annual budget owned, flagship smartphones</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n"><em>&gt;3</em> yrs</div>
+    <div class="stat-d">GTM lead, Samsung flagship mobile division</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n"><em>8.6</em></div>
+    <div class="stat-d">MSc cum laude, data science, Erasmus University</div>
+  </div>
+</div>
+
+<div class="slr">
+  <span class="mono">AI work that shipped</span>
+  <span class="mono" style="color:#2a2a2a">Samsung Benelux, 2023 to present</span>
+</div>
+
+<div class="ai-section">
+  <p class="ai-intro">
+    Samsung was late to AI content creation. I was part of changing that. None of these are presentations about AI. <strong>These are things we built, tested and put in front of real people.</strong>
+  </p>
+  <div class="proj-grid">
+
+    <div class="proj">
+      <div class="proj-type">AI content creation</div>
+      <div class="proj-name">AI content factory</div>
+      <div class="proj-body">Led the internal push to bring AI into Samsung's content production workflow. One of the first teams within Samsung globally to operationalise this. Navigated brand, legal and creative to make it actually usable, not just permitted.</div>
+      <div class="proj-result">First mover within Samsung globally</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-type">AI research</div>
+      <div class="proj-name">AI persona model</div>
+      <div class="proj-body">Replaced traditional consumer research panels with AI personas that generate insights faster and at lower cost. Built to sit inside the briefing process, not alongside it.</div>
+      <div class="proj-result">Live in campaign decision-making</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-type">AI workflow</div>
+      <div class="proj-name">AI newsroom</div>
+      <div class="proj-body">Built an AI scraping and synthesis tool via Monks Flow that pulls signals from the Samsung newsroom into campaign briefs automatically. Cuts briefing prep time and closes the gap between product news and marketing response.</div>
+      <div class="proj-result">Used weekly across the team</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-type">Consumer activation</div>
+      <div class="proj-name">Galaxy AI brand activations</div>
+      <div class="proj-body">Led multiple award-winning flagship campaigns including S10 becomes S25, student campaigns and loyalty campaigns. Coordinated artists, agencies, city logistics and production crews simultaneously. I was the single point of contact on the day it all went live.</div>
+      <div class="proj-result">Multiple launches. Award-winning. Benelux.</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-type">AI x culture</div>
+      <div class="proj-name">Van Gogh Museum x Galaxy AI</div>
+      <div class="proj-body">Initiated an AI-powered audio tour inside the Van Gogh Museum. One museum, one tech build and one Samsung governance chain that had every reason to slow this down. Got it done on time.</div>
+      <div class="proj-result">Live in museum. First Samsung cultural AI collaboration.</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-type">Emerging platforms</div>
+      <div class="proj-name">GEO, Metaverse and Roblox taskforces</div>
+      <div class="proj-body">Active across innovation taskforces exploring where Samsung shows up next: generative engine optimisation, metaverse presence and Roblox as a brand platform. Running AI workshops internally to bring colleagues along too.</div>
+      <div class="proj-result">Cross-team AI adoption, Benelux</div>
+    </div>
+
+  </div>
+</div>
+
+<svg class="visual-sep" viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="height:60px; display:block;">
+  <rect width="1200" height="60" fill="#050505"/>
+  <line x1="0" y1="30" x2="1200" y2="30" stroke="#1e1e1e" stroke-width="0.5"/>
+  <line x1="100" y1="20" x2="100" y2="40" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="200" y1="15" x2="200" y2="45" stroke="#FFE227" stroke-width="1"/>
+  <line x1="300" y1="20" x2="300" y2="40" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="400" y1="22" x2="400" y2="38" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="500" y1="15" x2="500" y2="45" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="600" y1="20" x2="600" y2="40" stroke="#FFE227" stroke-width="1"/>
+  <line x1="700" y1="22" x2="700" y2="38" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="800" y1="15" x2="800" y2="45" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="900" y1="20" x2="900" y2="40" stroke="#2a2a2a" stroke-width="0.5"/>
+  <line x1="1000" y1="15" x2="1000" y2="45" stroke="#FFE227" stroke-width="1"/>
+  <line x1="1100" y1="20" x2="1100" y2="40" stroke="#2a2a2a" stroke-width="0.5"/>
+  <circle cx="200" cy="30" r="3" fill="#FFE227"/>
+  <circle cx="600" cy="30" r="3" fill="#FFE227"/>
+  <circle cx="1000" cy="30" r="3" fill="#FFE227"/>
+  <text x="200" y="14" font-family="DM Mono, monospace" font-size="8" fill="#3a3a3a" letter-spacing="2" text-anchor="middle">AI CONTENT</text>
+  <text x="600" y="14" font-family="DM Mono, monospace" font-size="8" fill="#3a3a3a" letter-spacing="2" text-anchor="middle">BRAND ACTIVATION</text>
+  <text x="1000" y="14" font-family="DM Mono, monospace" font-size="8" fill="#3a3a3a" letter-spacing="2" text-anchor="middle">CONTENT ENGINE</text>
+</svg>
+
+<div class="slr"><span class="mono">Why client-side experience changes things</span></div>
+
+<div class="argument">
+  <div class="arg-cell">
+    <div class="arg-label">What I bring that's hard to hire</div>
+    <h3 class="arg-h3">I write the briefs that everyone else executes from.</h3>
+    <p class="arg-p">As GTM lead for Samsung's flagship mobile division, I own the full strategy and then brief every specialist and agency in the chain. Cheil, Publicis, GoSpooky, media, social, influencer, PR, CRM, eStore. I know exactly where things break between strategy and production because I set the direction and wrote it down first. <strong>That's a different starting point than someone who shows up after the strategy is already set.</strong></p>
+    <div class="traits">
+      <span class="trait">Impatient with vague strategy</span>
+      <span class="trait">Data science background</span>
+      <span class="trait">Builds things herself</span>
+      <span class="trait">Measures what happens after</span>
+    </div>
+  </div>
+  <div class="arg-cell">
+    <div class="arg-label">What this means for Content Engine</div>
+    <h3 class="arg-h3">I know how to make Galaxy AI land with consumers. I know how Tag should make Content Engine land with brands.</h3>
+    <p class="arg-p">I've designed activations where mainstream consumers interact with AI features live. That taught me exactly what makes AI feel worth having and what makes it fall flat. <strong>That's the translation layer Tag needs when it tells a brand that Content Engine will change how they produce.</strong></p>
+  </div>
+</div>
+
+<div class="slr"><span class="mono">Where I'm building next</span></div>
+
+<div class="apac">
+  <div class="apac-text">
+    <h3 class="apac-h3">Tag's APAC production hubs are exactly where I want to be.</h3>
+    <p class="apac-p">I've built a career in Amsterdam and I'm genuinely ready to leave it behind. Not because I have to, but because I'm at the point where the next chapter needs a new city, a new context and a real stretch outside my comfort zone. Singapore, Hong Kong, Sydney. Dentsu is scaling content capability across the region faster than anywhere else. <strong>This is a deliberate move toward something bigger, not a preference I'm negotiating around.</strong></p>
+  </div>
+  <div class="apac-cities">
+    <button class="city on" onclick="this.classList.toggle('on')"><span>Singapore</span><span class="dot"></span></button>
+    <button class="city on" onclick="this.classList.toggle('on')"><span>Hong Kong</span><span class="dot"></span></button>
+    <button class="city on" onclick="this.classList.toggle('on')"><span>Sydney</span><span class="dot"></span></button>
+    <button class="city on" onclick="this.classList.toggle('on')"><span>Taipei</span><span class="dot"></span></button>
+    <button class="city" onclick="this.classList.toggle('on')"><span>London</span><span class="dot"></span></button>
+  </div>
+</div>
+
+<div class="cta">
+  <div class="cta-bg" aria-hidden="true">TAG</div>
+  <p class="cta-line">Let's talk about what it looks like when the client becomes the <em>builder.</em></p>
+  <a href="https://www.linkedin.com/in/thisisdaphne/" target="_blank" class="btn">Get in touch</a>
+</div>
+
+<div class="foot">
+  <span>
+    <a href="mailto:daphne.tan@hotmail.com">daphne.tan@hotmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="tel:+31624543288">+31 6 24 54 32 88</a>
+  </span>
+  <a href="https://linkedin.com/in/thisisdaphne" target="_blank">linkedin.com/in/thisisdaphne</a>
+</div>
+
+</body>
+</html>
